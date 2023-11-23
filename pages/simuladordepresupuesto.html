@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>BancoNGP|Simulador de préstamos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <script defer src="../js/funciones.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../img/banco.png">
+
+</head>
+
+<body class="sinFondo">
+    <header>
+        <nav class="navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html"><span>Bienvenidos a Banco NGP</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Simulador de Préstamos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="divBlanco">
+        <h1>Simulador de Préstamos</h1>
+
+        <label for="monto">Monto del Préstamo:</label>
+        <input type="number" id="monto" placeholder="Monto del préstamo"><br>
+
+        <label for="interes">Tasa de Interés Anual (%):</label>
+        <input type="number" id="interes" placeholder="Tasa de interés"><br>
+
+        <label for="plazo">Plazo en Años:</label>
+        <input type="number" id="plazo" placeholder="Plazo del préstamo"><br>
+
+        <button onclick="calcularPrestamo()">Calcular</button>
+        <button onclick="limpiarHistorial()">Limpiar Historial</button>
+
+        <div id="resultado" style="display: none;">
+            <h2>Resultado:</h2>
+            <p>Pago Mensual: <span id="pagoMensual"></span></p>
+            <p>Pago Total: <span id="pagoTotal"></span></p>
+            <p>Costo Total del Préstamo: <span id="costoTotal"></span></p>
+        </div>
+
+        <div id="historial">
+            <h2>Historial de Cálculos</h2>
+            <ul id="listaHistorial"></ul>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultadoElement = document.getElementById("resultado");
+            if (resultadoElement) {
+                resultadoElement.style.display = "none";
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>
