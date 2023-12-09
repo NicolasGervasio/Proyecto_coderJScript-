@@ -1,5 +1,5 @@
 function calcularPrestamo() {
-    const monto = parseFloat(document.getElementById("monto").value);
+    const monto = parseFloat(document.getElementById("monto").value);errores
     const interesAnual = parseFloat(document.getElementById("interes").value);
     const plazoAnios = parseInt(document.getElementById("plazo").value);
     
@@ -7,9 +7,14 @@ function calcularPrestamo() {
     resultadoElement.style.backgroundColor = "black";
     
     if (isNaN(monto) || isNaN(interesAnual) || isNaN(plazoAnios) || monto <= 0 || interesAnual <= 0 || plazoAnios <= 0) {
-        alert("Por favor, ingrese valores válidos y positivos.");
+        // Mostrar el mensaje de error en el elemento HTML
+        document.getElementById('mensajeError').innerHTML = "Por favor, ingrese valores válidos y positivos.";
         return;
+    } else {
+        // Limpiar el mensaje de error si no hay errores
+        document.getElementById('mensajeError').innerHTML = "";
     }
+    
 
     const tasaMensual = (interesAnual / 100) / 12;
     const numeroPagos = plazoAnios * 12;
@@ -73,8 +78,8 @@ function mostrarHistorial(historial) {
 // Llamar a la función para cargar resultados y el historial al cargar la página
 cargarResultadosAlmacenados();
 mostrarHistorial(JSON.parse(localStorage.getItem("historialPrestamos")) || []);
-
+// Elimina todos los elementos hijos de la lista
 function limpiarHistorial() {
     const listaHistorial = document.getElementById("listaHistorial");
-    listaHistorial.innerHTML = ""; // Elimina todos los elementos hijos de la lista
+    listaHistorial.innerHTML = ""; 
 }
