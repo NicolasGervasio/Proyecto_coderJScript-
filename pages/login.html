@@ -7,22 +7,24 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/login.css">
     <script defer src="../js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <body>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
     
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
     
-<body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
-
-            <button type="button" onclick="login()">Login</button>
-        </form>
-        <p id="loginMessage"></p>
-    </div>
-</body>
-
-</html>
+                <!-- Llama a la función login al hacer clic en el botón -->
+                <button type="button" onclick="login()">Login</button>
+            </form>
+            <p id="loginMessage"></p>
+        </div>
+    
+        <!-- Otros elementos del body -->
+    </body>
+    

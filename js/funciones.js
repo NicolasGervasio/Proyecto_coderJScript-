@@ -1,5 +1,5 @@
 function calcularPrestamo() {
-    const monto = parseFloat(document.getElementById("monto").value);errores
+    const monto = parseFloat(document.getElementById("monto").value);
     const interesAnual = parseFloat(document.getElementById("interes").value);
     const plazoAnios = parseInt(document.getElementById("plazo").value);
     
@@ -78,8 +78,8 @@ function mostrarHistorial(historial) {
 // Llamar a la función para cargar resultados y el historial al cargar la página
 cargarResultadosAlmacenados();
 mostrarHistorial(JSON.parse(localStorage.getItem("historialPrestamos")) || []);
-// Elimina todos los elementos hijos de la lista
+
 function limpiarHistorial() {
     const listaHistorial = document.getElementById("listaHistorial");
-    listaHistorial.innerHTML = ""; 
+    listaHistorial.innerHTML = ""; // Elimina todos los elementos hijos de la lista
 }
