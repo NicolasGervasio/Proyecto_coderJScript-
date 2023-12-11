@@ -7,11 +7,9 @@ function calcularPrestamo() {
     resultadoElement.style.backgroundColor = "black";
     
     if (isNaN(monto) || isNaN(interesAnual) || isNaN(plazoAnios) || monto <= 0 || interesAnual <= 0 || plazoAnios <= 0) {
-        // Mostrar el mensaje de error en el elemento HTML
         document.getElementById('mensajeError').innerHTML = "Por favor, ingrese valores válidos y positivos.";
         return;
     } else {
-        // Limpiar el mensaje de error si no hay errores
         document.getElementById('mensajeError').innerHTML = "";
     }
     
@@ -50,16 +48,27 @@ function calcularPrestamo() {
     return { pagoMensual, pagoTotal, costoTotal };
 }
 
-// Cargar resultados almacenados en localStorage
-function cargarResultadosAlmacenados() {
-    const resultadosJSON = localStorage.getItem("resultadosPrestamo");
+async function cargarResultadosAlmacenados() {
+    try {
+        const response = await fetch('https://my-json-server.typicode.com/tu-usuario/tu-repo/resultados');
+        const resultados = await response.json();
 
-    if (resultadosJSON) {
-        const resultados = JSON.parse(resultadosJSON);
         document.getElementById("pagoMensual").textContent = `$${resultados.pagoMensual}`;
         document.getElementById("pagoTotal").textContent = `$${resultados.pagoTotal}`;
         document.getElementById("costoTotal").textContent = `$${resultados.costoTotal}`;
         document.getElementById("resultado").style.display = "block";
+    } catch (error) {
+        errorCargaResultados = 'Error al cargar resultados almacenados.';
+    }
+}
+
+async function cargarHistorialDesdeServidor() {
+    try {
+        const response = await fetch('https://my-json-server.typicode.com/tu-usuario/tu-repo/historial');
+        const historial = await response.json();
+        mostrarHistorial(historial);
+    } catch (error) {
+        errorCargaHistorial = 'Error al cargar historial desde el servidor.';
     }
 }
 
@@ -81,5 +90,6 @@ mostrarHistorial(JSON.parse(localStorage.getItem("historialPrestamos")) || []);
 
 function limpiarHistorial() {
     const listaHistorial = document.getElementById("listaHistorial");
-    listaHistorial.innerHTML = ""; // Elimina todos los elementos hijos de la lista
+    listaHistorial.innerHTML = "";
+
 }
