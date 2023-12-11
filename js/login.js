@@ -11,13 +11,11 @@ function login() {
             title: '¡Login exitoso!',
             text: 'Bienvenido',
         }).then((result) => {
-            // Redirige a la página después de hacer clic en "OK"
             if (result.isConfirmed) {
                 window.location.href = "./simuladordepresupuesto.html";
             }
         });
     } else {
-        // mostrar un mensaje de error
         Swal.fire({
             icon: 'error',
             title: 'Error',
